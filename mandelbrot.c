@@ -1,9 +1,9 @@
 #include "fractol.h"
 
-
 #define WIDTH 1000
 #define HEIGHT 1000
-int put_Mandelbrot(double  x, double y);
+
+int put_Mandelbrot(double  x, double y, double scale);
 
 typedef struct s_complex
 {
@@ -11,22 +11,24 @@ typedef struct s_complex
 	double	im;
 }	t_complex;
 
-int main()
+int	main()
 {
     void *mlx_ptr;
     void *win_ptr;
+	void *img;
     int i;
     int j;
 
     mlx_ptr = mlx_init();
     win_ptr = mlx_new_window(mlx_ptr, 600, 600, "test");
-    i = 0;
+    img = mlx_new_image(mlx_ptr, 600, 600);
+	i = 0;
     while (i < 600)
     {
         j = 0;
         while (j < 600)
         {
-            mlx_pixel_put(mlx_ptr, win_ptr, i, j,  put_Mandelbrot((double)i , (double)j));
+            mlx_pixel_put(mlx_ptr, win_ptr, i, j,  put_Mandelbrot((double)i , (double)j, 400));
             j++;
         }
         i++;
@@ -34,7 +36,7 @@ int main()
     mlx_loop(mlx_ptr);
 }
 
-int put_Mandelbrot(double  x, double y)
+int	put_Mandelbrot(double  x, double y, double scale)
 {
 	int i;
 	int max_iterations;
@@ -45,8 +47,8 @@ int put_Mandelbrot(double  x, double y)
 	i = 0;
 	z.re = 0;
 	z.im = 0;
-	c.re = (x - 0.7 * 600 ) / 200;
-	c.im = (y - 0.5 * 600) / 200;
+	c.re = (x - 0 - 0.7 * 600) / scale;
+	c.im = (y  -0 - 0.5 * 600) / scale;
 	max_iterations = 30;
 	while(z.re * z.re + z.im * z.im < 10000000000 && i < max_iterations)
 	{
@@ -57,16 +59,12 @@ int put_Mandelbrot(double  x, double y)
 	}
 	if (i == max_iterations)
 		return (0);
-	printf("i = %d\n", i);
-	return (255 + (255 << 8) + (255 << 16));
+	return ((255 + (255 << 8) + (255 << 16)) / i);
 }
 
 //zの大きさによっていい感じに色のコントラストを付けるような関数を用意するとうまく行きそう
-
-
 // from PIL import Image, ImageDraw
 // from mandelbrot import mandelbrot, MAX_ITER
-
 // # Image size (pixels)
 // WIDTH = 600
 // HEIGHT = 400

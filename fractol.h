@@ -14,5 +14,5 @@
 # include <sys/ipc.h>
 # include <sys/shm.h>
 # include <X11/extensions/XShm.h>
-# include "./minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 #endif
