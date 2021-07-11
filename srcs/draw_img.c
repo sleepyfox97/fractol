@@ -5,7 +5,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 void	ft_show(t_frac *frac)
@@ -25,6 +25,9 @@ void	ft_show(t_frac *frac)
 			else if (frac->type == _MANDELBR)
 				my_mlx_pixel_put(&(frac->data), x, 600 - y, \
 					ft_mandelbrot((double)x, (double)y, frac));
+			else if (frac->type == _PERPEN)
+				my_mlx_pixel_put(&(frac->data), x, 600 - y, \
+					ft_perpendicular((double)x, (double)y, frac));
 			x++;
 		}
 		y++;

@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-int ft_is_float(char *s)
+int	ft_is_float(char *s)
 {
 	int	i;
 	int	flag;

@@ -1,5 +1,6 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
+//heder
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -8,14 +9,13 @@
 # include <math.h>
 # include <stdint.h>
 # include <limits.h>
-
-//for minilibx
+//feader for minilibx
 # include <X11/Xlib.h>
 # include <sys/ipc.h>
 # include <sys/shm.h>
 # include <X11/extensions/XShm.h>
 # include "../minilibx-linux/mlx.h"
-
+//for printf color
 # define _RED "\x1b[31m"
 # define _GRN "\x1b[32m"
 # define _YLW "\x1b[33m"
@@ -23,19 +23,19 @@
 # define _MGT "\x1b[35m"
 # define _CYAN "\x1b[36m"
 # define _END "\x1b[39m"
-
+//fractol number
 # define _MANDELBR 0
 # define _JULIA 1
-
+# define _PERPEN 2
+//key number
 # define K_ESC 65307
-
 # define K_LEFT 65361
 # define K_UP 65362
 # define K_RIGHT 65363
 # define K_DOWN 65364
 # define UP 4
 # define DOWN 5
-
+// window size
 # define _WIDTH 600
 # define _HEIGHT 600
 
@@ -45,7 +45,7 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
+}	t_data;
 
 typedef struct	s_frac
 {
@@ -62,25 +62,22 @@ typedef struct	s_frac
 	struct s_data data;
 }	t_frac;
 
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-
 void	ft_initialize(int argc, char **argv, t_frac *fraction);
-void	ft_error(void);
-void	ft_make_img(t_frac *frac);
 void	ft_show(t_frac *frac);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	ft_error(void);
 
 //calculate every pixecl color about each fract-ol
 int		ft_julia(double  x, double y, t_frac *frac);
 int		ft_mandelbrot(double  x, double y, t_frac *frac);
+int		ft_perpendicular(double x, double y, t_frac *frac);
 
-
+//event of mlx
 void	ft_use_mlx(t_frac *frac);
 int		ft_key_event(int kyecode, t_frac *frac);
 void	ft_close(t_frac *frac);
 int		ft_click_event(t_frac *frac);
 int		ft_mroll(int zoom, int x, int y, t_frac *frac);
-
 
 //in util1.c
 int		ft_is_float(char *s);
@@ -88,6 +85,7 @@ int		ft_isspace(char c);
 int		ft_atof(char *s, int i, double *result);
 int		ft_atol(char *s, int i, double *result);
 size_t	ft_strlen(char *s);
+
 //in util2.c
 int		ft_isdigit(int c);
 int		ft_isint(char *str);

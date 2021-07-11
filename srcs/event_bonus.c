@@ -9,13 +9,13 @@ void	ft_use_mlx(t_frac *frac)
 	mlx_loop(frac->mlx_ptr);
 }
 
-int		ft_click_event(t_frac *frac)
+int	ft_click_event(t_frac *frac)
 {
 	ft_close(frac);
 	return (0);
 }
 
-int		ft_key_event(int keycode, t_frac *frac)
+int	ft_key_event(int keycode, t_frac *frac)
 {
 	if (keycode == K_ESC)
 		ft_close(frac);
@@ -42,7 +42,7 @@ int		ft_key_event(int keycode, t_frac *frac)
 	return (0);
 }
 
-int		ft_mroll(int keycode, int x, int y, t_frac *frac)
+int	ft_mroll(int keycode, int x, int y, t_frac *frac)
 {
 	(void)x;
 	(void)y;
@@ -62,8 +62,6 @@ int		ft_mroll(int keycode, int x, int y, t_frac *frac)
 	}
 	return (0);
 }
-
-
 
 void	ft_close(t_frac *frac)
 {

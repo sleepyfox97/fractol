@@ -15,6 +15,7 @@ SRCS	+=	srcs/julia.c
 SRCS	+=	srcs/mandelbrot.c
 SRCS	+=	srcs/util_1.c
 SRCS	+=	srcs/util_2.c
+SRCS	+=	srcs/perpendicular.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -24,6 +25,7 @@ SRCB	+=	srcs/event_bonus.c
 SRCB	+=	srcs/draw_img.c
 SRCB	+=	srcs/julia.c
 SRCB	+=	srcs/mandelbrot.c
+SRCB	+=	srcs/perpendicular.c
 SRCB	+=	srcs/util_1.c
 SRCB	+=	srcs/util_2.c
 
@@ -36,7 +38,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJB) -o $(NAME) -I./include -L./minilibx-linux -lmlx_Linux -lXext -lX11 -lm
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I./include -L./minilibx-linux -lmlx_Linux -lXext -lX11 -lm
 	@echo "\nFINISH Compiling $(NAME)!"
 	@echo "$(_YELLOW)Try \"./$(NAME)  rt_files/*.rt\" to use$(_END)"
 
