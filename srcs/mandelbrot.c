@@ -20,5 +20,5 @@ int	ft_mandelbrot(double x, double y, t_frac *frac)
 		frac->z_re = xtmp;
 		i++;
 	}
-	return ((8 * i));
+	return ((256 / i) << 8 | (8 * i));
 }
