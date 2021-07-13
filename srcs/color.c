@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-int		ft_hsv_to_rgv(double h, double s, double v)
+int	ft_hsv_to_rgb(double h, double s, double v)
 {
 	double	x;
 	double	c;
@@ -25,10 +25,8 @@ int		ft_hsv_to_rgv(double h, double s, double v)
 	else if (5 <= h && h < 6)
 		ft_set_rgb(rgb, c, 0, x);
 	ft_set_rgb(rgb, rgb[0] + (v - c), rgb[1] + (v - c), rgb[2] + (v - c));
-	rgb[0] = floor(rgb[0] * 255);
-	rgb[1] = floor(rgb[1] * 255);
-	rgb[2] = floor(rgb[2] * 255);
-	return ((int)rgb[0] << 16 | (int)rgb[1] << 8 | (int)rgb[2]);
+	return ((int)floor(rgb[0] * 255) << 16 | (int)floor(rgb[1] * 255) << 8
+		| (int)floor(rgb[2] * 255));
 }
 
 void	ft_set_rgb(double *rgb, double a, double b, double c)

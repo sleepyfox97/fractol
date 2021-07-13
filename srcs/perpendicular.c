@@ -17,5 +17,5 @@ int	ft_perpendicular(double x, double y, t_frac *frac)
 		frac->z_re = xtmp;
 		i++;
 	}
-	return ((255 / i) << 16 | (255 / i) << 8 | (255 / i));
+	return (ft_hsv_to_rgb(60, i % 5, 0.1));
 }

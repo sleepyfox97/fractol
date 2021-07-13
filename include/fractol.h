@@ -67,6 +67,10 @@ void	ft_show(t_frac *frac);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	ft_error(void);
 
+//color
+void	ft_set_rgb(double *rgb, double a, double b, double c);
+int		ft_hsv_to_rgb(double h, double s, double v);
+
 //calculate every pixecl color about each fract-ol
 int		ft_julia(double  x, double y, t_frac *frac);
 int		ft_mandelbrot(double  x, double y, t_frac *frac);

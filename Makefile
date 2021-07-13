@@ -16,6 +16,7 @@ SRCS	+=	srcs/mandelbrot.c
 SRCS	+=	srcs/util_1.c
 SRCS	+=	srcs/util_2.c
 SRCS	+=	srcs/perpendicular.c
+SRCS	+=	srcs/color.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -28,6 +29,7 @@ SRCB	+=	srcs/mandelbrot.c
 SRCB	+=	srcs/perpendicular.c
 SRCB	+=	srcs/util_1.c
 SRCB	+=	srcs/util_2.c
+SRCB	+=	srcs/color.c
 
 OBJB = $(SRCB:.c=.o)
 
