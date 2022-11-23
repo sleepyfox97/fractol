@@ -20,14 +20,11 @@ void	ft_show(t_frac *frac)
 		while (x < _WIDTH)
 		{
 			if (frac->type == _JULIA)
-				my_mlx_pixel_put(&(frac->data), x, 600 - y, \
-					ft_julia((double)x, (double)y, frac));
+				my_mlx_pixel_put(&(frac->data), x, y, \
+					ft_julia((double)x - (frac->c_x), (double)y - (frac->c_y), frac));
 			else if (frac->type == _MANDELBR)
-				my_mlx_pixel_put(&(frac->data), x, 600 - y, \
+				my_mlx_pixel_put(&(frac->data), x, y, \
 					ft_mandelbrot((double)x, (double)y, frac));
-			else if (frac->type == _PERPEN)
-				my_mlx_pixel_put(&(frac->data), x, 600 - y, \
-					ft_perpendicular((double)x, (double)y, frac));
 			x++;
 		}
 		y++;

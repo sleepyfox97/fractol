@@ -8,11 +8,12 @@ int	main(int argc, char *argv[])
 	{
 		ft_initialize(argc, argv, &frac);
 		frac.mlx_ptr = mlx_init();
-		frac.win_ptr = mlx_new_window(frac.mlx_ptr, _WIDTH, _HEIGHT, "test");
+		frac.win_ptr = mlx_new_window(frac.mlx_ptr, _WIDTH, _HEIGHT, "fractol");
 		frac.data.img = mlx_new_image(frac.mlx_ptr, _WIDTH, _HEIGHT);
 		frac.data.addr = mlx_get_data_addr(frac.data.img,
 				&(frac.data.bits_per_pixel), &(frac.data.line_length),
 				&(frac.data.endian));
+        ft_show(&frac);
 		ft_use_mlx(&frac);
 	}
 	else

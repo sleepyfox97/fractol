@@ -4,16 +4,15 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <string.h>
 # include <math.h>
 # include <stdint.h>
 # include <limits.h>
 //feader for minilibx
-# include <X11/Xlib.h>
-# include <sys/ipc.h>
-# include <sys/shm.h>
-# include <X11/extensions/XShm.h>
+//# include <X11/Xlib.h>
+//# include <sys/ipc.h>
+//# include <sys/shm.h>
+//# include <X11/extensions/XShm.h>
 # include "../minilibx-linux/mlx.h"
 //for printf color
 # define _RED "\x1b[31m"
@@ -69,12 +68,11 @@ void	ft_error(void);
 
 //color
 void	ft_set_rgb(double *rgb, double a, double b, double c);
-int		ft_hsv_to_rgb(double h, double s, double v);
+int		ft_hsv_to_rgb(double s, double v);
 
 //calculate every pixecl color about each fract-ol
 int		ft_julia(double  x, double y, t_frac *frac);
 int		ft_mandelbrot(double  x, double y, t_frac *frac);
-int		ft_perpendicular(double x, double y, t_frac *frac);
 
 //event of mlx
 void	ft_use_mlx(t_frac *frac);

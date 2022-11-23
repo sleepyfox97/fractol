@@ -15,7 +15,6 @@ SRCS	+=	srcs/julia.c
 SRCS	+=	srcs/mandelbrot.c
 SRCS	+=	srcs/util_1.c
 SRCS	+=	srcs/util_2.c
-SRCS	+=	srcs/perpendicular.c
 SRCS	+=	srcs/color.c
 
 OBJS = $(SRCS:.c=.o)
@@ -40,14 +39,13 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I./include -L./minilibx-linux -lmlx_Linux -lXext -lX11 -lm
+	@$(CC)  $(OBJS) -o $(NAME) -I./include -I./minilibx-linux minilibx-linux/libmlx_Darwin.a -L/usr/X11R6/lib -lX11 -lXext -lm
 	@echo "\nFINISH Compiling $(NAME)!"
-	@echo "$(_YELLOW)Try \"./$(NAME)  rt_files/*.rt\" to use$(_END)"
 
-$(NAMEB) : $(OBJB)
-	@$(CC) $(CFLAGS) $(OBJB) -o $(NAMEB) -I./include -L./minilibx-linux -lmlx_Linux -lXext -lX11 -lm
-	@echo "\nFINISH Compiling $(NAMEB)!"
-	@echo "$(_YELLOW)Try \"./$(NAMEB)  rt_files/*.rt\" to use$(_END)"
+#$(NAME) : $(OBJS)
+#	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I./include -I./minilibx-linux -L./minilibx-linux -lmlx_Linux -lXext -lX11 -lm
+#	@echo "\nFINISH Compiling $(NAME)!"
+#	@echo "$(_YELLOW)Try \"./$(NAME)  rt_files/*.rt\" to use$(_END)"
 
 clean:
 	@echo "Removing object files...."
@@ -60,9 +58,8 @@ fclean:
 re: fclean all
 
 bonus: $(NAMEB)
-
 %.o: %.c
-	@$(CC) -c $(CFLAGS) -I./include -L./minilibx_linux -lmlx_Linux -lXext -lX11 -lm -o $@ $<
+	@$(CC) -O3 $(CFLAGS) -c -I./include -o $@ $<
 	@printf "$(_GREAN)>$(_END)"
 
 PHONY: all clean fclean re bonus
